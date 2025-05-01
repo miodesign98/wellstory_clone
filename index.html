@@ -6,14 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 삼성웰스토리_클론코딩</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style.scss">
 
     <script src="lib/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
     <script>
+        window.onload = () => {
+
+            let header = document.querySelector('.header');
+
+            //스크롤바의 값이 0보다 크면 header한테 클래스active추가 그렇지않으면 삭제
+            window.addEventListener('scroll', () => {
+
+                let srcollBar = window.scrollY;
+
+                if (srcollBar > 0) {
+                    header.classList.add('active');
+                } else {
+                    header.classList.remove('active');
+                }//원하는 위치 숫자를 0대신 넣을수 있음 px쓰면 안됨
+            });
+        };
+
         $(function () {
             let navHeight = $('.depth02').height();
             $('.nav_bg').css('height', navHeight + 100);
@@ -132,10 +151,74 @@
                         }, 1000);
                     },
                 },
+
             });
 
-        
+            $(document).ready(function () {
+                let swiper = new Swiper('.main-swiper', {
+                    loop: true,
+                    on: {
+                        slideChangeTransitionEnd: function () {
+                            let activeSlide = $('.swiper-slide').eq(this.realIndex);
+                            activeSlide.find('.slide-animate').each(function () {
+                                $(this).removeClass('slide-animate');
+                                void this.offsetWidth;
+                                $(this).addClass('slide-animate');
+                            });
+                        }
+                    }
+                });
+            });
+
+            AOS.init({
+                once: true, // 스크롤 한 번만 애니메이션
+                offset: 120, // 애니메이션 실행 시작 위치
+                duration: 800, // 기본 지속시간
+            });
+
         });/* script end */
+
+        $(function () {
+            function animateCounter($el) {
+                let target = parseInt($el.data('count')); // 목표 숫자
+                let count = 0;
+                let step = target / 100;
+
+                $el.text('0'); // 처음 0으로 설정
+
+                // 딜레이 600ms 후 실행
+                setTimeout(function () {
+                    let interval = setInterval(function () {
+                        count += step;
+
+                        if (count >= target) {
+                            count = target;
+                            clearInterval(interval);
+                        }
+
+                        $el.text(Math.floor(count).toLocaleString()); // 화면에 표시
+                    }, 10); // 0.01초 간격으로 실행
+                }, 600); // 600ms 딜레이
+            }
+            function runCountersIfVisible() {
+                $('.count').each(function () {
+                    let $this = $(this);
+
+                    if ($this.hasClass('animated')) return;
+
+                    let elTop = $this.offset().top;
+                    let winBottom = $(window).scrollTop() + $(window).height();
+
+                    if (elTop < winBottom) {
+                        $this.addClass('animated');
+                        animateCounter($this);
+                    }
+                });
+            }
+
+            // 페이지 로드 & 스크롤 시마다 실행
+            $(window).on('load scroll', runCountersIfVisible);
+        });
 
     </script>
 </head>
@@ -272,11 +355,11 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="slide_inner">
-                                <div class="image">
+                                <!-- <div class="image">
                                     <img src="img/main_visual_0.jpg" alt="">
-                                </div><!-- image -->
+                                </div> -->
                                 <div class="text">
-                                    <img src="img/다운로드.svg" alt="mainicon" class="shape slide-animate delay-1" >
+                                    <img src="img/다운로드.svg" alt="mainicon" class="shape slide-animate delay-1">
                                     <h2 class="slide-animate delay-2">Make <br>
                                         <span>impactful</span> stories<br>
                                         well
@@ -288,9 +371,9 @@
 
                         <div class="swiper-slide">
                             <div class="slide_inner">
-                                <div class="image">
+                                <!-- <div class="image">
                                     <img src="img/main_visual_1.jpg" alt="">
-                                </div><!-- image -->
+                                </div> -->
                                 <div class="text">
                                     <img src="img/다운로드.svg" alt="mainicon" class="shape slide-animate delay-1">
                                     <h2 class="slide-animate delay-2">Make <br>
@@ -304,9 +387,9 @@
 
                         <div class="swiper-slide">
                             <div class="slide_inner">
-                                <div class="image">
+                                <!-- <div class="image">
                                     <img src="img/main_visual_2.jpg" alt="">
-                                </div><!-- image -->
+                                </div> -->
                                 <div class="text">
                                     <img src="img/다운로드.svg" alt="mainicon" class="shape slide-animate delay-1">
                                     <h2 class="slide-animate delay-2">Make <br>
@@ -314,7 +397,7 @@
                                         well
                                     </h2>
                                     <p class="slide-animate delay-3">산업의 패러다임을 이끄는 핵심</p>
-                                </div><!-- text --> 
+                                </div><!-- text -->
                             </div>
                         </div><!-- swiper-slide -->
 
@@ -333,6 +416,92 @@
             </div><!-- inner -->
         </section><!-- main_visual -->
 
+        <section class="section section01">
+            <div class="inner">
+                <h2 data-aos="fade-up" data-aos-easing="ease-out" data-aos-duration="1000" data-aos-offset="100"
+                    data-aos-once="true">our Story</h2>
+                <ul class="text">
+                    <li>
+                        <strong data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"
+                            data-aos-once="true">우리의 삶이 건강해지고 당신의 비즈니스가 더 성장하는 스토리</strong>
+                        <p data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400" data-aos-once="true">
+                            고객의 삶과 비즈니스가 건강한 성장을 이룰 수 있도록 맞춤 서비스, 앞선 전문성, 새로운 연결로 차별화된 식음 솔루션을 제안하고 산업의 미래를 리딩하며 고객과 함께
+                            성장하는 기업, 우리는 삼성웰스토리입니다.</p>
+                    </li>
+                    <li data-aos="fade" data-aos-duration="1500" data-aos-delay="600" data-aos-once="true">
+                        <strong>
+                            <em class="count" data-count="110">110</em>
+                            <span>만 식</span>
+                        </strong>
+                        <p>글로벌 600여 개 사업장,<br> 하루 110만식 제공</p>
+                    </li>
+                    <li data-aos="fade" data-aos-duration="1500" data-aos-delay="600" data-aos-once="true">
+                        <strong>
+                            <em class="count" data-count="11000">11,000</em>
+                            <span>개</span>
+                        </strong>
+                        <p>하루 1만 1천여 개 고객사에<br> 신선한 식자재 안정적 공급</p>
+                    </li>
+
+                </ul>
+
+            </div><!-- inner -->
+        </section><!-- section01 -->
+
+        <section class="section section02">
+            <div class="inner">
+                <div class="item_wrap">
+                    <div class="item_b">
+                        <h2>Solution & <br>
+                            Service</h2>
+                        <div class="text">
+                            <img src="img/다운로드.svg" alt="">
+                            <p>새로운 도전과 앞선 서비스로 식음 산업의 솔루션을 제시합니다.</p>
+                        </div><!-- text -->
+                    </div><!-- item_b -->
+
+                    <ul class="item">
+                        <li>
+                            <div class="text">
+                                <p>산업을 선도하는 혁신적 시도로 지켜온</p>
+                                <h3>푸드서비스</h3>
+                            </div><!-- text -->
+                            <button type="button" class="next">
+                                <img src="img/next.svg" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <p>식음을 넘어 고객의 건강케어까지</p>
+                                <h3>헬스케어 솔루션</h3>
+                            </div><!-- text -->
+                            <button type="button" class="next">
+                                <img src="img/next.svg" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <p>고객 F&B 비즈니스의 든든한 기반</p>
+                                <h3>식자재 유통</h3>
+                            </div><!-- text -->
+                            <button type="button" class="next">
+                                <img src="img/next.svg" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <p>식음 비즈니스의 성장을 돕는</p>
+                                <h3>360 솔루션</h3>
+                            </div><!-- text -->
+                            <button type="button" class="next">
+                                <img src="img/next.svg" alt="">
+                            </button>
+                        </li>
+                    </ul><!-- item -->
+
+                </div><!-- item_wrap -->
+            </div><!-- inner -->
+        </section><!-- section02 -->
 
     </main>
 

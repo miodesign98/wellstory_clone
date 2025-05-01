@@ -101,7 +101,7 @@ body {
 
     .inner {
         max-width: 1280px;
-        width: calc(100% - 40px);
+        width: calc(100% - 4rem);
         height: 100%;
         margin: 0 auto;
         display: flex;
@@ -111,8 +111,12 @@ body {
             line-height: 10rem;
 
             a {
-                height: 36px;
+                height: 3.6rem;
                 display: block;
+
+                @media screen and (max-width:1240px) {
+                    height: 2.6rem;
+                }
 
                 img {
                     height: 100%;
@@ -120,11 +124,10 @@ body {
                 }
             }
 
-
         }
 
         .nav {
-            @media screen and (max-width:1024px) {
+            @media screen and (max-width:1240px) {
                 display: none
             }
 
@@ -155,7 +158,7 @@ body {
                     }
 
                     .depth01 {
-                        width: 230px;
+                        width: 23rem;
                         display: block;
                         line-height: 10rem;
 
@@ -213,7 +216,7 @@ body {
         }
 
         .pc {
-            @media screen and (max-width:1024px) {
+            @media screen and (max-width:1240px) {
                 display: none
             }
         }
@@ -231,19 +234,19 @@ body {
         .mobile {
             display: none;
 
-            @media screen and (max-width:1024px) {
+            @media screen and (max-width:1240px) {
                 display: block
             }
         }
 
         .nav_menu {
-            @media screen and (max-width:1024px) {
+            @media screen and (max-width:1240px) {
                 display: block
             }
         }
 
         .nav_mobile {
-            @media screen and (max-width:1024px) {
+            @media screen and (max-width:1240px) {
                 width: 100%;
                 height: 100vh;
                 padding: 20px;
@@ -342,11 +345,11 @@ body {
     .main_swiper {
         max-width: 1280px;
         width: calc(100% - 8rem);
-        height: calc(100vh - 100px);
+        height: calc(100vh - 10rem);
         margin: 0 auto;
         position: relative;
 
-        .circle-effect{
+        .circle-effect {
             position: absolute;
             top: 0;
             right: 0;
@@ -360,20 +363,23 @@ body {
             transform: scale(0);
             transform-origin: right top;
 
-            &.active{
+            &.active {
                 animation: circleExpand 1s ease forwards;
             }
         }
+
         @keyframes circleExpand {
             0% {
                 transform: scale(1);
                 opacity: 1;
             }
+
             100% {
                 transform: scale(9);
                 opacity: 0;
             }
         }
+
         .swiper-wrapper {
             width: 100%;
             height: 100%;
@@ -387,6 +393,23 @@ body {
                     height: 100%;
                     margin: 0 auto;
                     position: relative;
+
+                    .slide-animate {
+                        opacity: 0;
+                        animation-name: slideUpFade;
+                        animation-duration: 0.6s;
+                        animation-fill-mode: both;
+                        animation-timing-function: ease-out;
+                    }
+                    .delay-1{
+                        animation-delay: 1.6s;
+                    }
+                    .delay-2{
+                        animation-delay: 2s;
+                    }
+                    .delay-3{
+                        animation-delay: 2.3s;
+                    }
 
                     .image {
                         width: 100%;
@@ -476,6 +499,10 @@ body {
                 text-transform: uppercase;
                 border-radius: 0 20px 0 0;
 
+                opacity: 0;
+                animation: slideRight 0.8s ease-out forwards;
+                animation-delay: 0.8s;
+
                 &.active {
                     display: none;
                 }
@@ -494,12 +521,50 @@ body {
                 writing-mode: vertical-rl;
                 border-radius: 20px 0 0 20px;
 
+                overflow: hidden;
+                animation: slideDown 0.8s ease-out forwards;
+
                 &.active {
                     display: none;
                 }
             }
         }
+
     }
 
 
 }
+
+/* keyframe */
+@keyframes slideDown {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 31rem;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 1;
+        width: 0;
+    }
+
+    100% {
+        opacity: 1;
+        width: 19rem;
+    }
+}
+
+@keyframes slideUpFade {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

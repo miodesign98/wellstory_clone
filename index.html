@@ -6,16 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 삼성웰스토리_클론코딩</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style.scss">
 
     <script src="lib/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
         $(function () {
@@ -135,18 +131,10 @@
                             $('.circle-effect').removeClass('active');
                         }, 1000);
                     },
-
-                    slideChangeTransitionEnd: function () {
-                        // 먼저 기존 애니메이션 클래스 제거
-                        $('.swiper-slide-active [data-aos]').removeClass('aos-animate');
-                        AOS.refreshHard(); // 전체 리셋 + 지연 적용
-                    }
                 },
             });
 
-            AOS.init({
-                once: false   // 스크롤 또는 슬라이드당 한 번만 실행
-            });
+        
         });/* script end */
 
     </script>
@@ -288,15 +276,12 @@
                                     <img src="img/main_visual_0.jpg" alt="">
                                 </div><!-- image -->
                                 <div class="text">
-                                    <img src="img/다운로드.svg" alt="mainicon" class="shape" data-aos="fade-down"
-                                        data-aos-duration="1000" data-aos-delay="800">
-                                    <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1300">Make <br>
+                                    <img src="img/다운로드.svg" alt="mainicon" class="shape slide-animate delay-1" >
+                                    <h2 class="slide-animate delay-2">Make <br>
                                         <span>impactful</span> stories<br>
                                         well
                                     </h2>
-                                    <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1800">글로벌 식음서비스 시장의
-                                        해답
-                                    </p>
+                                    <p class="slide-animate delay-3">글로벌 식음서비스 시장의 해답</p>
                                 </div><!-- text -->
                             </div>
                         </div><!-- swiper-slide -->
@@ -307,15 +292,12 @@
                                     <img src="img/main_visual_1.jpg" alt="">
                                 </div><!-- image -->
                                 <div class="text">
-                                    <img src="img/다운로드.svg" alt="mainicon" class="shape" data-aos="fade-down"
-                                        data-aos-duration="1000" data-aos-delay="800">
-                                    <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1300">Make <br>
+                                    <img src="img/다운로드.svg" alt="mainicon" class="shape slide-animate delay-1">
+                                    <h2 class="slide-animate delay-2">Make <br>
                                         <span>wellness</span> stories<br>
                                         well
                                     </h2>
-                                    <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1800">푸드서비스의 내일을
-                                        제시하는
-                                        솔루션</p>
+                                    <p class="slide-animate delay-3">푸드서비스의 내일을 제시하는 솔루션</p>
                                 </div><!-- text -->
                             </div>
                         </div><!-- swiper-slide -->
@@ -326,27 +308,23 @@
                                     <img src="img/main_visual_2.jpg" alt="">
                                 </div><!-- image -->
                                 <div class="text">
-                                    <img src="img/다운로드.svg" alt="mainicon" class="shape" data-aos="fade-down"
-                                        data-aos-duration="1000" data-aos-delay="800">
-                                    <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1300">Make <br>
+                                    <img src="img/다운로드.svg" alt="mainicon" class="shape slide-animate delay-1">
+                                    <h2 class="slide-animate delay-2">Make <br>
                                         <span>innovation</span> stories<br>
                                         well
                                     </h2>
-                                    <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1800">산업의 패러다임을 이끄는
-                                        핵심</p>
-                                </div><!-- text -->
+                                    <p class="slide-animate delay-3">산업의 패러다임을 이끄는 핵심</p>
+                                </div><!-- text --> 
                             </div>
                         </div><!-- swiper-slide -->
 
 
                     </div><!-- swiper-wrapper -->
-                    <div class="custom-button custom-button-prev" data-aos="fade-right" data-aos-duration="1000"
-                        data-aos-delay="500">
+                    <div class="custom-button custom-button-prev">
                         <img src="img/prev.svg" alt="">
                         <span>Frontrunner</span>
                     </div><!-- custom-button-prev -->
-                    <div class="custom-button custom-button-next" data-aos="fade-down" data-aos-duration="1000"
-                        data-aos-delay="0">
+                    <div class="custom-button custom-button-next">
                         <img src="img/next.png" alt="">
                         <span>Innovation</span>
                     </div><!-- custom-button-next -->

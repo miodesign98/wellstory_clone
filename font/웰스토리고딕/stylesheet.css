@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Welstory gothic';
+    src: url('Welstorygothic-Regular.woff2') format('woff2'),
+        url('Welstorygothic-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Welstory gothic';
+    src: url('Welstorygothic-Light.woff2') format('woff2'),
+        url('Welstorygothic-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Welstory gothic';
+    src: url('Welstorygothic-Bold.woff2') format('woff2'),
+        url('Welstorygothic-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

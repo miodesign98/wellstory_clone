@@ -1,0 +1,425 @@
+@charset "UTF-8";
+@import url("reset.css");
+@font-face {
+  font-family: "Welstory gothic";
+  src: url("Welstorygothic-Regular.woff2") format("woff2"), url("Welstorygothic-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Welstory gothic";
+  src: url("Welstorygothic-Light.woff2") format("woff2"), url("Welstorygothic-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Welstory gothic";
+  src: url("Welstorygothic-Bold.woff2") format("woff2"), url("Welstorygothic-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alkaline";
+  src: url("Alkaline-Medium.woff2") format("woff2"), url("Alkaline-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alkaline";
+  src: url("Alkaline-Bold.woff2") format("woff2"), url("Alkaline-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: local("Pretendard Bold"), url(./woff2/Pretendard-Bold.woff2) format("woff2"), url(./woff/Pretendard-Bold.woff) format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-display: swap;
+  src: local("Pretendard SemiBold"), url(./woff2/Pretendard-SemiBold.woff2) format("woff2"), url(./woff/Pretendard-SemiBold.woff) format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src: local("Pretendard Medium"), url(./woff2/Pretendard-Medium.woff2) format("woff2"), url(./woff/Pretendard-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Pretendard Regular"), url(./woff2/Pretendard-Regular.woff2) format("woff2"), url(./woff/Pretendard-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  font-display: swap;
+  src: local("Pretendard Light"), url(./woff2/Pretendard-Light.woff2) format("woff2"), url(./woff/Pretendard-Light.woff) format("woff");
+}
+html,
+body {
+  font-size: 62.5%;
+  /* 16px이 100% 62.5%가 공통적으로 자주사용되는 수치(10px)*/
+}
+
+.header {
+  width: 100%;
+  height: 10rem;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 10;
+}
+.header .inner {
+  max-width: 1280px;
+  width: calc(100% - 40px);
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.header .inner .logo {
+  line-height: 10rem;
+}
+.header .inner .logo a {
+  height: 36px;
+  display: block;
+}
+.header .inner .logo a img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 1024px) {
+  .header .inner .nav {
+    display: none;
+  }
+}
+.header .inner .nav .gnb {
+  display: flex;
+  color: #222;
+}
+.header .inner .nav .gnb li {
+  position: relative;
+}
+.header .inner .nav .gnb li:nth-child(2) .depth01 {
+  margin-left: -7px;
+}
+.header .inner .nav .gnb li:nth-child(3) .depth01 {
+  margin-left: -13px;
+}
+.header .inner .nav .gnb li:nth-child(4) .depth01 {
+  margin-left: -55px;
+}
+.header .inner .nav .gnb li .depth01 {
+  width: 230px;
+  display: block;
+  line-height: 10rem;
+  font-family: "Welstory gothic";
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  text-align: center;
+  transition: 0.3s;
+  z-index: 30;
+}
+.header .inner .nav .gnb li .depth01:hover {
+  color: #FF5624;
+}
+.header .inner .nav .gnb li .depth01:hover .depth02 {
+  border-top: 2px solid #FF5624;
+}
+.header .inner .nav .gnb li .depth02 {
+  width: 230px;
+  padding: 4rem 1.6rem 0;
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  display: block;
+  text-align: left;
+  border-right: 1px solid #EEE;
+  font-family: "Welstory gothic";
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: -0.048rem;
+  color: #5E5F5F;
+  z-index: 15;
+  display: none;
+}
+.header .inner .nav .gnb li .depth02 li {
+  margin-bottom: 2rem;
+}
+.header .inner .lang {
+  line-height: 10rem;
+  height: 28px;
+}
+.header .inner .lang img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 1024px) {
+  .header .inner .pc {
+    display: none;
+  }
+}
+.header .inner .nav_bg {
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  z-index: 10;
+  display: none;
+}
+.header .inner .mobile {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  .header .inner .mobile {
+    display: block;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .header .inner .nav_menu {
+    display: block;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .header .inner .nav_mobile {
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background-color: #fff;
+    overflow: hidden;
+  }
+  .header .inner .nav_mobile .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+  .header .inner .nav_mobile .title img {
+    height: 36px;
+    display: block;
+  }
+  .header .inner .nav_mobile .title .close_btn {
+    width: 24px;
+  }
+  .header .inner .nav_mobile .title .close_btn img {
+    height: 24px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .header .inner .nav_mobile .gnb {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+    padding-bottom: 100px;
+  }
+  .header .inner .nav_mobile .gnb::-webkit-scrollbar {
+    display: none;
+  }
+  .header .inner .nav_mobile .gnb > li {
+    margin-top: 4rem;
+  }
+  .header .inner .nav_mobile .gnb > li .depth01 {
+    font-family: "Welstory gothic";
+    font-weight: bold;
+    font-size: 2.4rem;
+    text-transform: capitalize;
+  }
+  .header .inner .nav_mobile .gnb > li > .depth02 {
+    font-family: "Pretendard";
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-top: 1.2rem;
+  }
+  .header .inner .nav_mobile .gnb > li > .depth02 li {
+    margin-bottom: 16px;
+  }
+  .header .inner .nav_mobile .mob_bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.6rem;
+    background-color: #f5f5f5;
+  }
+  .header .inner .nav_mobile .mob_bottom .btn_wrap {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .header .inner .nav_mobile .mob_bottom .btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.main_visual {
+  margin-top: 10rem;
+}
+.main_visual .main_swiper {
+  max-width: 1280px;
+  width: calc(100% - 8rem);
+  height: calc(100vh - 100px);
+  margin: 0 auto;
+  position: relative;
+}
+.main_visual .main_swiper .circle-effect {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 0 0 0 18rem;
+  background: #FF5624;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: right top;
+}
+.main_visual .main_swiper .circle-effect.active {
+  animation: circleExpand 1s ease forwards;
+}
+@keyframes circleExpand {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(9);
+    opacity: 0;
+  }
+}
+.main_visual .main_swiper .swiper-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner .image {
+  width: 100%;
+  height: 100%;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner .text {
+  position: absolute;
+  top: 10rem;
+  left: 12rem;
+  color: #fff;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner .text .shape {
+  height: 42px;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner .text .shape img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner .text h2 {
+  font-family: "Welstory gothic";
+  font-size: 6.8rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 2rem 0 2.4rem;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner .text h2 span {
+  position: relative;
+  font-family: "Alkaline";
+  font-weight: 500;
+  font-size: 7.8rem;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner .text h2 span::after {
+  position: absolute;
+  left: 0;
+  top: 80%;
+  content: "";
+  width: 100%;
+  height: 0.2rem;
+  background-color: #FFF;
+}
+.main_visual .main_swiper .swiper-wrapper .swiper-slide .slide_inner .text p {
+  font-size: 1.8rem;
+  font-family: "Pretendard";
+  font-weight: 500;
+}
+.main_visual .main_swiper .custom-button {
+  position: absolute;
+  background-color: #fff;
+  color: #424342;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  z-index: 1;
+}
+.main_visual .main_swiper .custom-button img {
+  width: 1.3rem;
+  height: 1.3rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.main_visual .main_swiper .custom-button.custom-button-prev {
+  width: 19rem;
+  height: 9.8rem;
+  bottom: -1px;
+  left: -1px;
+  font-size: 1.8rem;
+  font-family: "Pretendard";
+  font-weight: 400;
+  text-transform: uppercase;
+  border-radius: 0 20px 0 0;
+}
+.main_visual .main_swiper .custom-button.custom-button-prev.active {
+  display: none;
+}
+.main_visual .main_swiper .custom-button.custom-button-next {
+  width: 7.4rem;
+  height: 31rem;
+  padding-top: 3.25rem;
+  top: 10rem;
+  right: -1px;
+  font-size: 1.8rem;
+  font-family: "Pretendard";
+  font-weight: 400;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  border-radius: 20px 0 0 20px;
+}
+.main_visual .main_swiper .custom-button.custom-button-next.active {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

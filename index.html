@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 삼성웰스토리_클론코딩</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.scss">
+
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        $(function () {
+            let navHeight = $('.depth02').height();
+            $('.nav_bg').css('height', navHeight + 100);
+
+            // 각 depth01 요소마다 원래 margin-left 저장
+            $('.depth01').each(function () {
+                let margin = $(this).css('margin-left');
+                $(this).data('original-margin', margin); // 개별 저장
+            });
+
+            $('.nav > .gnb .depth01').mouseenter(function () {
+                $('.nav > .gnb .depth02').stop().slideDown();
+                $('.nav_bg').stop().slideDown();
+
+                $('.depth01').css('margin-left', 0);
+
+            });
+            $('.nav_bg, .depth02').mouseleave(function () {
+                $('.nav > .gnb .depth02').stop().slideUp();
+                $('.nav_bg').stop().slideUp();
+
+                $('.depth01').each(function () {
+                    let originalMargin = $(this).data('original-margin'); // 개별 불러오기
+                    $(this).css('margin-left', originalMargin);
+                });
+            });
+
+            $('.nav > .gnb li').mouseenter(function () {
+                $(this).find('.depth02').css('background-color', '#f5f5f5');
+                $(this).find('.depth02').css('height', navHeight + 100);
+                $(this).find('.depth02').css('border-top', '2px solid #FF5624');
+                $(this).find('.depth02 a').css('color', '#424342');
+                $(this).find('.depth02 a').css('font-weight', 'bold');
+
+
+            });
+            $('.nav > .gnb li').mouseleave(function () {
+                $(this).find('.depth02').css('background-color', '');
+                $(this).find('.depth02').css('border-top', '');
+                $(this).find('.depth02 a').css('color', '#5E5F5F');
+                $(this).find('.depth02 a').css('font-weight', '400');
+            });
+
+            $('.nav_menu').click(function () {
+                $('.nav_mobile').animate({
+                    'right': '0'
+                }, 1000);
+            });
+            $('.close_btn').click(function () {
+                $('.nav_mobile').animate({
+                    'right': '-100%'
+                }, 1000);
+            });
+
+            let slideLabels = ['Frontrunner', 'Solution & Service', 'Innovation'];
+
+            function updateButtonText(index) {
+                let total = slideLabels.length;
+
+                let prevText = index > 0 ? slideLabels[index - 1] : '';
+                let nextText = index < total - 1 ? slideLabels[index + 1] : '';
+
+                $('.custom-button-prev span').text(prevText);
+                $('.custom-button-next span').text(nextText);
+            };
+            function updateButtonVisibility(index, total) {
+                // 첫 번째 슬라이드에서는 이전 버튼 숨김
+                if (index <= 0) {
+                    $('.custom-button-prev').addClass('active');
+                } else {
+                    $('.custom-button-prev').removeClass('active');
+                }
+
+                // 마지막 슬라이드에서는 다음 버튼 숨김
+                if (index == total - 1) {
+                    $('.custom-button-next').addClass('active');
+                } else {
+                    $('.custom-button-next').removeClass('active');
+                }
+            }
+
+            let swiper = new Swiper('.main_swiper', {
+                initialSlide: 1,
+                loop: false,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                speed: 800,
+                allowTouchMove: true,
+                slidesPerView: 1,
+                navigation: {
+                    nextEl: '.custom-button-next',
+                    prevEl: '.custom-button-prev',
+                },
+                on: {
+                    init: function () {
+                        let index = this.realIndex;
+                        updateButtonText(index);
+                        updateButtonVisibility(index, slideLabels.length);
+                    },
+
+                    slideChange: function () {
+                        let index = this.realIndex;
+                        updateButtonText(index);
+                        updateButtonVisibility(index, slideLabels.length);
+                    },
+
+                    slideChangeTransitionStart: function () {
+                        $('.circle-effect').addClass('active');
+                    },
+
+                    slideChangeTransitionEnd: function () {
+                        setTimeout(() => {
+                            $('.circle-effect').removeClass('active');
+                        }, 1000);
+                    },
+
+                    slideChangeTransitionEnd: function () {
+                        // 먼저 기존 애니메이션 클래스 제거
+                        $('.swiper-slide-active [data-aos]').removeClass('aos-animate');
+                        AOS.refreshHard(); // 전체 리셋 + 지연 적용
+                    }
+                },
+            });
+
+            AOS.init({
+                once: false   // 스크롤 또는 슬라이드당 한 번만 실행
+            });
+        });/* script end */
+
+    </script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="inner">
+            <h1 class="logo">
+                <a href="#">
+                    <img src="img/welstory_logo.svg" alt="logo">
+                </a>
+            </h1>
+
+            <nav class="nav pc">
+                <ul class="gnb">
+                    <li>
+                        <a href="#" class="depth01">story</a>
+                        <ul class="depth02">
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">비전</a></li>
+                            <li><a href="#">아카이브</a></li>
+                            <li><a href="#">뉴스</a></li>
+                            <li><a href="#">채용</a></li>
+                            <li><a href="#">전자공고</a></li>
+                        </ul><!-- depth02 -->
+                    </li>
+                    <li>
+                        <a href="#" class="depth01">Solution & Service</a>
+                        <ul class="depth02">
+                            <li><a href="#">푸드서비스</a></li>
+                            <li><a href="#">헬스케어 솔루션</a></li>
+                            <li><a href="#">식자재 유통</a></li>
+                            <li><a href="#">360 솔루션</a></li>
+                        </ul><!-- depth02 -->
+                    </li>
+                    <li>
+                        <a href="#" class="depth01">Frontrunner</a>
+                        <ul class="depth02">
+                            <li><a href="#">푸드테크</a></li>
+                            <li><a href="#">R&D</a></li>
+                            <li><a href="#">인프라</a></li>
+                            <li><a href="#">글로벌 네트워크</a></li>
+                        </ul><!-- depth02 -->
+                    </li>
+                    <li>
+                        <a href="#" class="depth01">Innovation</a>
+                        <ul class="depth02">
+                            <li><a href="#">Welstory Innovation Track</a></li>
+                            <li><a href="#">Sustainable Story</a></li>
+                        </ul><!-- depth02 -->
+                    </li>
+                </ul>
+            </nav>
+
+            <button type="button" class="lang pc"><img src="img/global.svg" alt=""></button>
+            <div class="nav_bg"></div>
+
+            <button type="button" class="nav_menu mobile">
+                <img src="img/menu.svg" alt="">
+            </button>
+
+            <nav class="nav_mobile mobile">
+                <div class="title">
+                    <img src="img/welstory_logo.svg" alt="">
+                    <button type="button" class="close_btn">
+                        <img src="img/close.svg" alt="">
+                    </button>
+                </div><!-- title -->
+                <ul class="gnb">
+                    <li>
+                        <a href="#" class="depth01">story</a>
+                        <ul class="depth02">
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">비전</a></li>
+                            <li><a href="#">아카이브</a></li>
+                            <li><a href="#">뉴스</a></li>
+                            <li><a href="#">채용</a></li>
+                            <li><a href="#">전자공고</a></li>
+                        </ul><!-- depth02 -->
+                    </li>
+                    <li>
+                        <a href="#" class="depth01">Solution & Service</a>
+                        <ul class="depth02">
+                            <li><a href="#">푸드서비스</a></li>
+                            <li><a href="#">헬스케어 솔루션</a></li>
+                            <li><a href="#">식자재 유통</a></li>
+                            <li><a href="#">360 솔루션</a></li>
+                        </ul><!-- depth02 -->
+                    </li>
+                    <li>
+                        <a href="#" class="depth01">Frontrunner</a>
+                        <ul class="depth02">
+                            <li><a href="#">푸드테크</a></li>
+                            <li><a href="#">R&D</a></li>
+                            <li><a href="#">인프라</a></li>
+                            <li><a href="#">글로벌 네트워크</a></li>
+                        </ul><!-- depth02 -->
+                    </li>
+                    <li>
+                        <a href="#" class="depth01">Innovation</a>
+                        <ul class="depth02">
+                            <li><a href="#">Welstory Innovation Track</a></li>
+                            <li><a href="#">Sustainable Story</a></li>
+                        </ul><!-- depth02 -->
+                    </li>
+                </ul>
+                <div class="mob_bottom mobile">
+                    <div class="btn_wrap">
+                        <button type="button" class="btn">
+                            <span>위치</span>
+                            <img src="img/next.png" alt="">
+                        </button>
+                        <button type="button" class="btn">
+                            <span>고객센터</span>
+                            <img src="img/next.png" alt="">
+                        </button>
+                    </div><!-- btn_wrap -->
+                    <button type="button" class="mob_lang">
+                        <img src="img/global.svg" alt="">
+                    </button>
+                </div><!-- mob_bottom -->
+            </nav><!-- nav_mobile -->
+
+        </div><!-- inner -->
+    </header>
+
+    <main class="main">
+
+        <section class="main_visual">
+            <div class="inner">
+                <div class="swiper-container main_swiper">
+                    <div class="circle-effect"></div><!-- icon -->
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slide_inner">
+                                <div class="image">
+                                    <img src="img/main_visual_0.jpg" alt="">
+                                </div><!-- image -->
+                                <div class="text">
+                                    <img src="img/다운로드.svg" alt="mainicon" class="shape" data-aos="fade-down"
+                                        data-aos-duration="1000" data-aos-delay="800">
+                                    <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1300">Make <br>
+                                        <span>impactful</span> stories<br>
+                                        well
+                                    </h2>
+                                    <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1800">글로벌 식음서비스 시장의
+                                        해답
+                                    </p>
+                                </div><!-- text -->
+                            </div>
+                        </div><!-- swiper-slide -->
+
+                        <div class="swiper-slide">
+                            <div class="slide_inner">
+                                <div class="image">
+                                    <img src="img/main_visual_1.jpg" alt="">
+                                </div><!-- image -->
+                                <div class="text">
+                                    <img src="img/다운로드.svg" alt="mainicon" class="shape" data-aos="fade-down"
+                                        data-aos-duration="1000" data-aos-delay="800">
+                                    <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1300">Make <br>
+                                        <span>wellness</span> stories<br>
+                                        well
+                                    </h2>
+                                    <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1800">푸드서비스의 내일을
+                                        제시하는
+                                        솔루션</p>
+                                </div><!-- text -->
+                            </div>
+                        </div><!-- swiper-slide -->
+
+                        <div class="swiper-slide">
+                            <div class="slide_inner">
+                                <div class="image">
+                                    <img src="img/main_visual_2.jpg" alt="">
+                                </div><!-- image -->
+                                <div class="text">
+                                    <img src="img/다운로드.svg" alt="mainicon" class="shape" data-aos="fade-down"
+                                        data-aos-duration="1000" data-aos-delay="800">
+                                    <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1300">Make <br>
+                                        <span>innovation</span> stories<br>
+                                        well
+                                    </h2>
+                                    <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1800">산업의 패러다임을 이끄는
+                                        핵심</p>
+                                </div><!-- text -->
+                            </div>
+                        </div><!-- swiper-slide -->
+
+
+                    </div><!-- swiper-wrapper -->
+                    <div class="custom-button custom-button-prev" data-aos="fade-right" data-aos-duration="1000"
+                        data-aos-delay="500">
+                        <img src="img/prev.svg" alt="">
+                        <span>Frontrunner</span>
+                    </div><!-- custom-button-prev -->
+                    <div class="custom-button custom-button-next" data-aos="fade-down" data-aos-duration="1000"
+                        data-aos-delay="0">
+                        <img src="img/next.png" alt="">
+                        <span>Innovation</span>
+                    </div><!-- custom-button-next -->
+                </div><!-- main_swiper -->
+
+            </div><!-- inner -->
+        </section><!-- main_visual -->
+
+
+    </main>
+
+</body>
+
+</html>

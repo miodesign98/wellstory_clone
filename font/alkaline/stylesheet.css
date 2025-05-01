@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Alkaline';
+    src: url('Alkaline-Medium.woff2') format('woff2'),
+        url('Alkaline-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alkaline';
+    src: url('Alkaline-Bold.woff2') format('woff2'),
+        url('Alkaline-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+

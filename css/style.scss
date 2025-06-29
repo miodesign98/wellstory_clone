@@ -893,15 +893,15 @@ body {
             gap: 0.8rem;
 
             @media screen and (max-width : 1024px) {
-                justify-content: center;
                 display: block !important;
-                width: 100% !important;
                 padding: 8rem 5rem 10rem;
+                text-align: center;
             }
 
 
             .item_wrap {
                 height: 65rem;
+                 margin: 0 auto; 
                 display: grid;
                 grid-auto-flow: column;
                 grid-template-columns: 65rem 58.6rem;
@@ -911,7 +911,7 @@ body {
                 justify-items: start;
 
                 @media screen and (max-width : 1024px) {
-                    width: 100%;
+                    margin: 0 auto;
                     height: 100%;
                     all: unset;
                     display: flex;
@@ -933,6 +933,7 @@ body {
 
                         @media screen and (max-width : 1024px) {
                             padding: 3.6rem 3.6rem 5rem;
+                        
                         }
 
                         &:hover {
@@ -960,6 +961,7 @@ body {
                                 width: 100%;
                                 height: 100%;
                                 padding: 3.6rem 3.6rem 5rem;
+                                text-align: left;
                             }
 
 

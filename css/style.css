@@ -836,7 +836,7 @@ body {
   .section02 .inner .contents .item_wrap,
   .section04 .inner .contents .item_wrap {
     margin: 0 auto;
-    height: 100%;
+    width: 100% !important;
     all: unset;
     display: flex;
     flex-direction: column;
@@ -996,6 +996,21 @@ body {
 .section04 .inner .contents .item_wrap li:nth-child(5) {
   border-radius: 2rem 0 0 0;
 }
+@media screen and (max-width: 1024px) {
+  .section02 .inner .contents .item_wrap li:nth-child(2),
+  .section04 .inner .contents .item_wrap li:nth-child(2) {
+    border-radius: 0 0 0 1.2rem;
+  }
+  .section02 .inner .contents .item_wrap li:nth-child(3), .section02 .inner .contents .item_wrap li:nth-child(4),
+  .section04 .inner .contents .item_wrap li:nth-child(3),
+  .section04 .inner .contents .item_wrap li:nth-child(4) {
+    border-radius: 1.2rem 0 0 1.2rem;
+  }
+  .section02 .inner .contents .item_wrap li:nth-child(5),
+  .section04 .inner .contents .item_wrap li:nth-child(5) {
+    border-radius: 1.2rem 0 0 0;
+  }
+}
 .section02 .inner .contents .item_wrap li a,
 .section04 .inner .contents .item_wrap li a {
   width: 100%;
@@ -1017,15 +1032,27 @@ body {
 .section04 .inner .contents .item_wrap li a .text p {
   font-size: 2rem;
   font-family: "Pretendard";
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.06rem;
   margin-bottom: 0.8rem;
+}
+@media screen and (max-width: 1024px) {
+  .section02 .inner .contents .item_wrap li a .text p,
+  .section04 .inner .contents .item_wrap li a .text p {
+    font-size: 1.6rem;
+  }
 }
 .section02 .inner .contents .item_wrap li a .text h3,
 .section04 .inner .contents .item_wrap li a .text h3 {
   font-size: 3.6rem;
   font-family: "Pretendard";
   font-weight: 700;
+}
+@media screen and (max-width: 1024px) {
+  .section02 .inner .contents .item_wrap li a .text h3,
+  .section04 .inner .contents .item_wrap li a .text h3 {
+    font-size: 2.4rem;
+  }
 }
 
 .section03 .inner {
@@ -1241,6 +1268,7 @@ body {
 @media screen and (max-width: 1024px) {
   .section05 .inner ul {
     width: 100%;
+    margin-top: 3rem;
   }
 }
 .section05 .inner ul li {
@@ -1251,6 +1279,16 @@ body {
   gap: 4rem;
   position: relative;
   padding: 3.2rem 0;
+}
+@media screen and (max-width: 500px) {
+  .section05 .inner ul li {
+    gap: 2rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .section05 .inner ul li .text {
+    width: 60%;
+  }
 }
 .section05 .inner ul li .text p {
   font-size: 2.4rem;
@@ -1265,6 +1303,11 @@ body {
     font-size: 1.8rem;
     line-height: 160%;
     letter-spacing: -0.054rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .section05 .inner ul li .text p {
+    font-size: 1.6rem;
   }
 }
 .section05 .inner ul li .text span {
@@ -1282,15 +1325,28 @@ body {
     letter-spacing: -0.048rem;
   }
 }
-.section05 .inner ul li img {
-  width: 21.8rem;
+@media screen and (max-width: 500px) {
+  .section05 .inner ul li .text span {
+    font-size: 1.4rem;
+  }
+}
+.section05 .inner ul li .image {
+  width: 21.8rem !important;
+  height: 13.6rem;
   box-sizing: border-box;
   overflow: hidden;
 }
 @media screen and (max-width: 1024px) {
-  .section05 .inner ul li img {
-    width: 138px;
+  .section05 .inner ul li .image {
+    width: 13.8rem !important;
+    height: 10rem !important;
   }
+}
+.section05 .inner ul li .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .section05 .inner ul li:nth-child(1) {
   padding: 0 0 3.2rem 0;
@@ -1304,7 +1360,7 @@ body {
   bottom: 0;
   animation: bottomLine 2s ease 2.5s forwards;
 }
-.section05 .inner ul li:nth-child(1) img {
+.section05 .inner ul li:nth-child(1) .image {
   border-radius: 0 0 0 1.6rem;
 }
 .section05 .inner ul li:nth-child(2)::after {
@@ -1316,7 +1372,7 @@ body {
   bottom: 0;
   animation: bottomLine 2s ease 3s forwards;
 }
-.section05 .inner ul li:nth-child(2) img {
+.section05 .inner ul li:nth-child(2) .image {
   border-radius: 1.6rem 0 0 1.6rem;
 }
 .section05 .inner ul li:nth-child(3)::after {
@@ -1328,7 +1384,7 @@ body {
   bottom: 0;
   animation: bottomLine 2s ease 3.5s forwards;
 }
-.section05 .inner ul li:nth-child(3) img {
+.section05 .inner ul li:nth-child(3) .image {
   border-radius: 1.6rem 0 0 0;
 }
 
@@ -1409,7 +1465,12 @@ body {
 @media screen and (max-width: 1024px) {
   .footer .inner .link .term {
     margin: 0 auto 0 0;
-    width: 70%;
+    width: 65%;
+  }
+}
+@media screen and (max-width: 430px) {
+  .footer .inner .link .term {
+    margin: 3.2rem 0 0;
   }
 }
 .footer .inner .link .term li {
@@ -1419,9 +1480,19 @@ body {
 .footer .inner .link .term li:nth-child(1) {
   border-left: none;
 }
+@media screen and (max-width: 430px) {
+  .footer .inner .link .term li:nth-child(1) {
+    padding: 0 1rem 0 0;
+  }
+}
 @media screen and (max-width: 1024px) {
   .footer .inner .link .term li {
     padding: 0 2rem;
+  }
+}
+@media screen and (max-width: 430px) {
+  .footer .inner .link .term li {
+    padding: 0 1rem;
   }
 }
 .footer .inner .link .sns {
@@ -1436,6 +1507,11 @@ body {
     margin-left: 0;
     justify-content: flex-start;
     margin-top: 3rem;
+  }
+}
+@media screen and (max-width: 430px) {
+  .footer .inner .link .sns {
+    margin-top: 1rem;
   }
 }
 .footer .inner .link .sns a {
@@ -1458,19 +1534,42 @@ body {
   justify-content: space-between;
   align-items: flex-end;
 }
+@media screen and (max-width: 430px) {
+  .footer .inner .footer_end {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.4rem;
+  }
+}
 .footer .inner .footer_end .address .logo {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 3.35rem;
 }
+@media screen and (max-width: 430px) {
+  .footer .inner .footer_end .address .logo {
+    width: 100%;
+    gap: 1rem;
+  }
+}
 .footer .inner .footer_end .address .logo li {
   height: 3.2rem;
   overflow: hidden;
 }
+@media screen and (max-width: 430px) {
+  .footer .inner .footer_end .address .logo li {
+    height: 2.2rem;
+  }
+}
 .footer .inner .footer_end .address .logo li:first-child {
   padding: 0 3.3rem 0 0;
   border-right: 1px solid #C0BDB9;
+}
+@media screen and (max-width: 430px) {
+  .footer .inner .footer_end .address .logo li:first-child {
+    padding: 0 1rem 0 0;
+  }
 }
 .footer .inner .footer_end .address .logo li img {
   width: 100%;
